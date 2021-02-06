@@ -27,15 +27,7 @@ pipeline {
                 }
             }
         }
-        stage("mvn build") {
-            steps {
-                script {
-                    // If you are using Windows then you should use "bat" step
-                    // Since unit testing is out of the scope we skip them
-                    PATH(/${MAVEN_HOME}/bin:$PATH -Dmaven.test.failure.ignore clean package/)
-                }
-            }
-        }
+
         stage("publish to nexus") {
             steps {
                 script {
