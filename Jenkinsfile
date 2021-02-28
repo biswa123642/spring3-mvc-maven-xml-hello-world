@@ -12,9 +12,9 @@ pipeline {
         // This can be http or https
         NEXUS_PROTOCOL = "http"
         // Where your Nexus is running
-        NEXUS_URL = "54.83.139.114:8081"
+        NEXUS_URL = "18.214.89.34:8081"
         // Repository where we will upload the artifact
-        NEXUS_REPOSITORY = "myrepo"
+        NEXUS_REPOSITORY = "biswajit"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "biswajit"
     }
@@ -63,15 +63,15 @@ pipeline {
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
-                                [artifactId: pom.artifactId,
+                                [artifactId: war.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: pom.packaging],
+                                type: war.packaging],
                                 // Lets upload the pom.xml file for additional information for Transitive dependencies
-                                [artifactId: pom.artifactId,
+                                [artifactId: war.artifactId,
                                 classifier: '',
                                 file: "pom.xml",
-                                type: "pom"]
+                                type: "war"]
                             ]
                         );
                     } else {
